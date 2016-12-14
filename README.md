@@ -1,3 +1,2 @@
-## Bootstrap package for testing
+## Tests with api
 
-start server with npm start
