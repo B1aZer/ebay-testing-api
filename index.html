@@ -84,7 +84,33 @@
           <h1 class="page-header">Dashboard</h1>
 
           <h2 class="sub-header">Section title</h2>
-          <div id="results"></div>
+          <div id="results">
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Image</th>
+                    <th>Title</th>
+                    <th>Text</th>
+                    <th>Buy It now</th>
+                    <th>Free Shipm ?</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="item in items">
+                    <td>num</td>
+                    <td> {{ item.galleryURL }}</td>
+                    <td> {{ item.title }}</td>
+                    <td> {{ item.subtitle }}</td>
+                    <td> {{ item.price }}</td>
+                    <td>Dunno</td>
+                    <td>Dunno</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -95,6 +121,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="node_modules/vue/dist/vue.js"></script>
     <script src="main.bundle.js"></script>
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
     <!--<script src="../../assets/js/vendor/holder.min.js"></script>-->

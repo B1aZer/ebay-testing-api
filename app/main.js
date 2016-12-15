@@ -1,9 +1,27 @@
-// @flow
 
 var str: string = 'hello world!';
 
 var url = 'https://svcs.ebay.com/services/search/FindingService/v1?SECURITY-APPNAME=Homec8d44-9096-4507-92f8-b640655c1ca&OPERATION-NAME=findItemsByKeywords&SERVICE-VERSION=1.0.0&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&keywords=iPhone&paginationInput.entriesPerPage=6&GLOBAL-ID=EBAY-US&siteid=0';
 
+var app = new Vue({
+  el: '#results',
+  data: {
+    items: []
+  },
+  mounted: function() {
+    this.fetchApi();
+  },
+  methods: {
+    fetchApi: function() {
+      var self = this;
+      jQuery.getJSON(url+"&callback=?", (root) => {
+        var items = root && root.findItemsByKeywordsResponse && root.findItemsByKeywordsResponse[0] && root.findItemsByKeywordsResponse[0].searchResult && root.findItemsByKeywordsResponse[0].searchResult[0] && root.findItemsByKeywordsResponse[0].searchResult[0].item || [];
+        self.items = items;
+      });
+    }
+  }
+})
+/*
 jQuery.getJSON(url+"&callback=?", function(root) {
   console.info('what');
     var items = root && root.findItemsByKeywordsResponse && root.findItemsByKeywordsResponse[0] && root.findItemsByKeywordsResponse[0].searchResult && root.findItemsByKeywordsResponse[0].searchResult[0] && root.findItemsByKeywordsResponse[0].searchResult[0].item || [];
@@ -31,3 +49,4 @@ jQuery.getJSON(url+"&callback=?", function(root) {
     </div>");
     document.getElementById("results").innerHTML = html.join("");
 });
+*/
